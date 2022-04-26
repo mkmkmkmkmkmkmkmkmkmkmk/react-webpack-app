@@ -1,5 +1,11 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 一、环境
+>Windows10+Pycharm2021
+### 二、运行说明
+> 1.通过package.json中`react-scripts`删除原来构建的前端的`build`文件夹
+> 
+> 2.通过package.json中`react-scripts build`打包生成前端的build文件夹
+> 
+> 3.再运行`api/app.py`作为flask的入口
 
-A Flask based API backend was added in the *api* directory.
-
-Read my [tutorial](https://blog.miguelgrinberg.com/post/how-to-create-a-react--flask-project) on how to create Flask + React combined projects.
+### 三、项目描述：
+> 大三期末作业

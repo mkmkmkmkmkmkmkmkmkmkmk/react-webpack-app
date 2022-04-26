@@ -1,50 +1,38 @@
-import React, { useState, useEffect } from 'react';
-import { BrowserRouter, Link, Switch, Route } from 'react-router-dom';
-import logo from './logo.svg';
-import './App.css';
+//创建“外壳”组件App
+import React,{Component} from 'react'
+import logo from './logo.svg'
+import './App.css'
+import HttpUtil from "./utils/HttpUtils";
+import ApiUtils from "./utils/AppUtils";
 
-function App() {
-  const [currentTime, setCurrentTime] = useState(0);
+import axios from "axios";
+// async function test_axios(){
+//   const {data} = await axios.get('/api/get');
+//   console.log(data);
 
-  useEffect(() => {
-    fetch('/api/time').then(res => res.json()).then(data => {
-      setCurrentTime(data.time);
-    });
-  }, []);
+//创建并暴露App组件
+export default class App extends Component{
+    handleOK = ()=>{
+                // console.log("填写正确！");
+                HttpUtil.post(ApiUtils.API_UPDATE, "dsvgufdkv")
+                    .then(
+                        re=>{
+                            console.log("返回结果：",re);
+                        }
+                    )
+                    .catch(error=>{
+                        console.log(error)
+                    });
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <BrowserRouter>
-          <div>
-            <Link className="App-link" to="/">Home</Link>
-            &nbsp;|&nbsp;
-            <Link className="App-link" to="/page2">Page2</Link>
+    }
+
+	render() {
+      return (
+          <div className="App" onClick={this.handleOK}>
+            <h1 >vhpdsfpiudddd</h1>
           </div>
-          <Switch>
-            <Route exact path="/">
-                <img src={logo} className="App-logo" alt="logo" />
-                <p>
-                  Edit <code>src/App.js</code> and save to reload.
-                </p>
-                <a
-                  className="App-link"
-                  href="https://reactjs.org"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Learn React
-                </a>
-                <p>The current time is {currentTime}.</p>
-            </Route>
-            <Route path="/page2">
-                <p>This is page 2!</p>
-            </Route>
-          </Switch>
-        </BrowserRouter>
-      </header>
-    </div>
-  );
+      )
+    }
 }
 
-export default App;
+
